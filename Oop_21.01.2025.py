@@ -22,7 +22,7 @@ class UserTooYoungError(Exception):
     pass
 
 ###########################################
-# 2. Define the User class
+# 2. Define the User class:
 
 class User:
     def __init__(self, name, email, password, birthday):
@@ -91,24 +91,24 @@ class User:
             value = datetime.strptime(value, "%Y-%m-%d")
 
 
-        # Check if the date is in the future
+        # Check if the date is in the future:
         if value > datetime.today():
             raise IllegalBirthdayError("The birthday must be in the past")
 
-        # Now set the birthday
+        # Now set the birthday:
         self.__birthday = value
 
-        # Check if the user is older than 20
+        # Check if the user is older than 20:
         age = self.age  # This will now work properly since birthday is set
         if age < 20:
             raise UserTooYoungError("The user must be older than 20 years")
 
-    # Getter for created_at (cannot be set)
+    # Getter for created_at (cannot be set):
     @property
     def created_at(self):
         return self.__created_at
 
-    # Age Getter
+    # Age Getter:
     @property
     def age(self):
         today = datetime.today()
@@ -118,12 +118,12 @@ class User:
             age -= 1
         return age
 
-    # String representation
+    # String representation:
     def __str__(self):
         return f"User(name={self.name}, email={self.email}, birthday={self.birthday.strftime('%Y-%m-%d')}, age={self.age}, created_at={self.created_at})"
 
-
-# 3. Testing with multiple user data
+####################################
+# 3. Testing with multiple user data:
 user_data = [
     ("Wisam", "Wisam.Gibran@example.com", "StrongP@ssw0rd", "1990-05-15"),  # Valid user
     ("Yosi", "Yosi.arnheim.com", "password", "2026-01-01"),  # Short name, invalid email, invalid password, future birthday
